@@ -26,10 +26,10 @@ jobs:
       - name: Setup Pip SSH Key
         uses: webfactory/ssh-agent@v0.5.4
         with:
-          ssh-private-key: ${{ secrets.AUTOMATE_PIP_SSH_KEY }}
+          ssh-private-key: ${{ secrets.pip_ssh_key }}
 
       - name: Install dependencies
         run: npm install renovate
 
       - name: Trigger renovate manually to evalute cc-tool packages
-        run: npx renovate --token ${{ secrets.AUTOMATE_GITHUB_ACCESS_TOKEN }} adjust/${{ inputs.repo_name }}
+        run: npx renovate --token ${{ secrets.github_access_token }} adjust/${{ inputs.repo_name }}
