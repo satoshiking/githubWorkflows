@@ -1,0 +1,28 @@
+name: Update cc-tools-*
+description: We run Renovate bot manually to look up dependencies from private repos (cc-tools-*)
+inputs:
+  repo_name:
+    required: true
+    type: string
+secrets:
+  github_access_token:
+    required: true
+  pip_ssh_key:
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Setup Pip SSH Key
+      uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ secrets.AUTOMATE_PIP_SSH_KEY }}
+
+    - name: Install dependencies
+      run: npm install renovate
+
+    - name: Trigger renovate manually to evalute cc-tool packages
+      run: npx renovate --token ${{ secrets.AUTOMATE_GITHUB_ACCESS_TOKEN }} adjust/${{ inputs.repo_name }}
