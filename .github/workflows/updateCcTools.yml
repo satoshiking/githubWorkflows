@@ -14,7 +14,6 @@ on:
 
 jobs:
   update_cc_tools:
-    name: Update python private packages
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -32,4 +31,4 @@ jobs:
         run: npm install renovate
 
       - name: Trigger renovate manually to evalute cc-tool packages
-        run: npx renovate --token ${{ secrets.github_access_token }} adjust/${{ inputs.repo_name }}
+        run: npx renovate --token ${{ secrets.github_access_token }} satoshiking/${{ inputs.repo_name }}  # TODO(satoshiking)  change OWNER
