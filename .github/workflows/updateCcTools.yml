@@ -34,4 +34,4 @@ jobs:
         run: npm install renovate
 
       - name: Trigger renovate manually to evalute cc-tool packages
-        run: npx renovate --token ${{ secrets.github_access_token }} satoshiking/${{ inputs.repo_name }}  # TODO(satoshiking)  change OWNER
+        run: npx renovate --token ${{ secrets.github_access_token }} adjust/${{ inputs.repo_name }}  # TODO(satoshiking)  change OWNER
