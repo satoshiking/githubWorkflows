@@ -1,4 +1,4 @@
-name: Update cc tools
+name: Update cc tools with Renovate Bot
 
 on:
   workflow_call:
